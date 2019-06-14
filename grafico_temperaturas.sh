@@ -4,7 +4,7 @@
 # Description   : Muestra un gráfico ASCII de las temperaturas de un log
 # Author        : Veltys
 # Date          : 14-06-2019
-# Version       : 0.7.0
+# Version       : 0.7.1
 # Usage         : sudo bash grafico_temperaturas.sh | ./grafico_temperaturas.sh
 # Notes         :
 
@@ -51,6 +51,8 @@ else
 	if [ $(echo $minimo | wc -c) -gt $relleno ]; then
 		relleno=$(echo $minimo | wc -c)
 	fi
+
+	relleno=$((${relleno}-1))
 
 	for (( i=$maximo; i>=${minimo}-1; i-- )); do
 		if [[ $i -gt ${minimo}-1 ]]; then
