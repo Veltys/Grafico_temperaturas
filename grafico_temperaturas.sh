@@ -4,7 +4,7 @@
 # Description   : Muestra un gráfico ASCII de las temperaturas de un log
 # Author        : Veltys
 # Date          : 14-06-2019
-# Version       : 0.2.4
+# Version       : 0.3.0
 # Usage         : sudo bash grafico_temperaturas.sh | ./grafico_temperaturas.sh
 # Notes         :
 
@@ -27,7 +27,7 @@ else
 
 	maximo=0
 
-	for (( i=0; i<${#horas[@]}; i++ )); do
+	for (( i=0; i<${#temperaturas[@]}; i++ )); do
 		temperaturas[$i]=$(redondear ${temperaturas[$i]} 0)
 
 		if [ $maximo -lt ${temperaturas[$i]} ]; then
@@ -37,7 +37,15 @@ else
 
 	for (( i=$maximo; i>=-1; i-- )); do
 		if [ $i -gt -1 ]; then
-			echo "$i"
+			echo -n "$i | "
+
+			for (( j=0; j<${#horas[@]}; j++ )); do
+				if [ ${temperaturas[$i]} -ge $i ]; then
+					echo -n '== '
+				else
+					echo -n '   '
+				fi
+			done
 		else
 			echo "$i"
 		fi
