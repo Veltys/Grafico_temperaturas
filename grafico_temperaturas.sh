@@ -4,12 +4,13 @@
 # Description   : Muestra un gráfico ASCII de las temperaturas de un log
 # Author        : Veltys
 # Date          : 14-06-2019
-# Version       : 0.5.0
+# Version       : 0.5.1
 # Usage         : sudo bash grafico_temperaturas.sh | ./grafico_temperaturas.sh
 # Notes         :
 
 
 ## Variables
+minimo=20
 
 
 ## Funciones
@@ -35,8 +36,8 @@ else
 		fi
 	done
 
-	for (( i=$maximo; i>=-1; i-- )); do
-		if [ $i -gt -1 ]; then
+	for (( i=$maximo; i>=${minimo}-1; i-- )); do
+		if [[ $i -gt ${minimo}-1 ]]; then
 			printf "%02d | " $i
 
 			for (( j=0; j<${#horas[@]}; j++ )); do
