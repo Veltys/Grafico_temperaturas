@@ -4,7 +4,7 @@
 # Description   : Muestra un gráfico ASCII de las temperaturas de un log
 # Author        : Veltys
 # Date          : 14-06-2019
-# Version       : 0.4.0
+# Version       : 0.4.1
 # Usage         : sudo bash grafico_temperaturas.sh | ./grafico_temperaturas.sh
 # Notes         :
 
@@ -51,20 +51,20 @@ else
 		else
 			echo -n '-----'
 
-			for (( j=0; j<${#horas[@]}; j++ )); do
+			for hora in "${horas[@]}"; do
 				echo -n '---'
 			done
 
 			echo
 
-			for hora in $horas; do
+			for hora in "${horas[@]}"; do
 				echo -n "${hora:0:2} "
 			done
 
 			echo
 
-			for hora in $horas; do
-				echo -n "${hora:2:2} "
+			for hora in "${horas[@]}"; do
+				echo -n "${hora:3:2} "
 			done
 
 			echo
