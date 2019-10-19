@@ -56,3 +56,5 @@ Sistema generador un gráfico de temperaturas a partir de logs de formato person
     - Opción de pintar una segunda gráfica, para sonda de temperatura.
 - 2.0.1:
     - Arreglo en la sangría del script.
+- 2.0.2:
+    - Añadidos los nuevos parámetros en la descripción del script.

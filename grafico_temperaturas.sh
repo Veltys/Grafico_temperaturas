@@ -4,8 +4,8 @@
 # Description   : Muestra un gráfico ASCII de las temperaturas de un log
 # Author        : Veltys
 # Date          : 19-10-2019
-# Version       : 2.0.1
-# Usage         : sudo bash grafico_temperaturas.sh | ./grafico_temperaturas.sh
+# Version       : 2.0.2
+# Usage         : sudo bash grafico_temperaturas.sh [ -t ] archivo_log | ./grafico_temperaturas.sh [ -t ] archivo_log
 # Notes         :
 
 
