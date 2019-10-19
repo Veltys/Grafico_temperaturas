@@ -51,4 +51,6 @@ Sistema generador un gráfico de temperaturas a partir de logs de formato person
     - El comando "wc" no cuenta los caracteres como se esperaba.
 - 1.0.0:
     - Importación del repositorio a GitHub.
-    - Creación de este documento
+    - Creación de este documento.
+- 2.0.0:
+    - Opción de pintar una segunda gráfica, para sonda de temperatura.
