@@ -60,3 +60,5 @@ Sistema generador un gráfico de temperaturas a partir de logs de formato person
     - Añadidos los nuevos parámetros en la descripción del script.
 - 2.1.0:
     - Valor mínimo automático y añadido parámetro de offset.
+- 2.1.1:
+    - Arreglo del valor de offset en todos los casos.
