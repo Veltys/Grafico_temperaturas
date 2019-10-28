@@ -4,7 +4,7 @@
 # Description   : Muestra un gráfico ASCII de las temperaturas de un log
 # Author        : Veltys
 # Date          : 28-10-2019
-# Version       : 2.1.2
+# Version       : 2.1.3
 # Usage         : sudo bash grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log | ./grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log
 # Notes         :
 
@@ -110,7 +110,7 @@ pintar() {
 
 
 ## Ejecución principal
-horas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*([0-9]{2}\:[0-9]{2})\:[0-9]{2}\ CEST[[:print:]]*/\1/'))
+horas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*([0-9]{2}\:[0-9]{2})\:[0-9]{2}\ CE?T[[:print:]]*/\1/'))
 
 temperaturas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*temp\=([0-9]{2})\.([0-9])[[:print:]]*/\1,\2/'))
 

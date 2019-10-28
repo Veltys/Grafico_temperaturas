@@ -64,3 +64,5 @@ Sistema generador un gráfico de temperaturas a partir de logs de formato person
     - Arreglo del valor de offset en todos los casos.
 - 2.1.2:
     - Optimizaciones varias.
+- 2.1.3:
+    - Arreglo de la detección de las horas cuando se está en el horario de invierno.
