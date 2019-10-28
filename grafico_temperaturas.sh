@@ -4,7 +4,7 @@
 # Description   : Muestra un gráfico ASCII de las temperaturas de un log
 # Author        : Veltys
 # Date          : 28-10-2019
-# Version       : 2.1.1
+# Version       : 2.1.2
 # Usage         : sudo bash grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log | ./grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log
 # Notes         :
 
@@ -110,19 +110,15 @@ pintar() {
 
 
 ## Ejecución principal
+horas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*([0-9]{2}\:[0-9]{2})\:[0-9]{2}\ CEST[[:print:]]*/\1/'))
+
+temperaturas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*temp\=([0-9]{2})\.([0-9])[[:print:]]*/\1,\2/'))
+
 if [ "$#" -eq 1 ]; then
-	horas=($(cat $1 | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*([0-9]{2}\:[0-9]{2})\:[0-9]{2}\ CEST[[:print:]]*/\1/'))
-
-	temperaturas=($(cat $1 | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*temp\=([0-9]{2})\.([0-9])[[:print:]]*/\1,\2/'))
-
 	offset=-1
 
 	pintar
 elif [[ "$#" -gt 1  &&  "$#" -lt 5  && ( "$1" == "-t" || "$3" == "-t" ) ]]; then
-	horas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*([0-9]{2}\:[0-9]{2})\:[0-9]{2}\ CEST[[:print:]]*/\1/'))
-
-	temperaturas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*temp\=([0-9]{2})\.([0-9])[[:print:]]*/\1,\2/'))
-
 	if [ "$1" == "-o" ]; then
 		offset=$2
 	elif [ "$2" == "-o" ]; then
@@ -133,7 +129,8 @@ elif [[ "$#" -gt 1  &&  "$#" -lt 5  && ( "$1" == "-t" || "$3" == "-t" ) ]]; then
 
 	pintar
 
-	echo; echo
+	echo
+	echo
 
 	temperaturas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*Temperatura\: ([0-9]{2})[[:print:]]*/\1/' | sed -r -e 's/[[:print:]]*Imposible obtener un resultado válido en [0-9]{2} intentos[[:print:]]*/0/'))
 
