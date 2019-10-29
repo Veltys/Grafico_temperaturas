@@ -3,8 +3,8 @@
 # Title         : grafico_temperaturas.sh
 # Description   : Muestra un gráfico ASCII de las temperaturas de un log
 # Author        : Veltys
-# Date          : 28-10-2019
-# Version       : 2.1.3
+# Date          : 29-10-2019
+# Version       : 2.1.4
 # Usage         : sudo bash grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log | ./grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log
 # Notes         :
 
@@ -132,7 +132,7 @@ elif [[ "$#" -gt 1  &&  "$#" -lt 5  && ( "$1" == "-t" || "$3" == "-t" ) ]]; then
 	echo
 	echo
 
-	temperaturas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*Temperatura\: ([0-9]{2})[[:print:]]*/\1/' | sed -r -e 's/[[:print:]]*Imposible obtener un resultado válido en [0-9]{2} intentos[[:print:]]*/0/'))
+	temperaturas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*Temperatura\: ([0-9]{1,2})[[:print:]]*/\1/' | sed -r -e 's/[[:print:]]*Imposible obtener un resultado válido en [0-9]* intentos[[:print:]]*/0/'))
 
 	if [ "$1" == "-o" ]; then
 		offset=$2

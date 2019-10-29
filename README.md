@@ -66,3 +66,5 @@ Sistema generador un gráfico de temperaturas a partir de logs de formato person
     - Optimizaciones varias.
 - 2.1.3:
     - Arreglo de la detección de las horas cuando se está en el horario de invierno.
+- 2.1.4:
+    - Arreglo de la detección de ciertos números.
