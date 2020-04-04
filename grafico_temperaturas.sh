@@ -3,7 +3,7 @@
 # Title         : grafico_temperaturas.sh
 # Description   : Muestra un gráfico ASCII de las temperaturas de un log
 # Author        : Veltys
-# Date          : 29-10-2019
+# Date          : 2019-10-29
 # Version       : 2.1.4
 # Usage         : sudo bash grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log | ./grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log
 # Notes         :
