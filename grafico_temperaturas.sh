@@ -3,8 +3,8 @@
 # Title         : grafico_temperaturas.sh
 # Description   : Muestra un gráfico ASCII de las temperaturas de un log
 # Author        : Veltys
-# Date          : 2019-10-29
-# Version       : 2.1.4
+# Date          : 2020-04-04
+# Version       : 2.1.5
 # Usage         : sudo bash grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log | ./grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log
 # Notes         :
 
@@ -110,7 +110,7 @@ pintar() {
 
 
 ## Ejecución principal
-horas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*([0-9]{2}\:[0-9]{2})\:[0-9]{2}\ CE?T[[:print:]]*/\1/'))
+horas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*([0-9]{2}\:[0-9]{2})\:[0-9]{2}\ CE[S]{0,1}T[[:print:]]*/\1/'))
 
 temperaturas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*temp\=([0-9]{2})\.([0-9])[[:print:]]*/\1,\2/'))
 

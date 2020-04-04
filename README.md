@@ -68,3 +68,5 @@ Sistema generador un gráfico de temperaturas a partir de logs de formato person
     - Arreglo de la detección de las horas cuando se está en el horario de invierno.
 - 2.1.4:
     - Arreglo de la detección de ciertos números.
+- 2.1.5:
+    - Arreglo de la detección de la franja horaria (sigue siendo válido para CET / CEST solamente :P).
