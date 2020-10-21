@@ -3,8 +3,8 @@
 # Title         : grafico_temperaturas.sh
 # Description   : Muestra un gráfico ASCII de las temperaturas de un log
 # Author        : Veltys
-# Date          : 2020-04-04
-# Version       : 2.1.5
+# Date          : 2020-10-21
+# Version       : 2.1.6
 # Usage         : sudo bash grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log | ./grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log
 # Notes         :
 
@@ -29,55 +29,55 @@ pintar() {
 
 	# Cálculo del valor mínimo de la gráfica
 	for (( i=0; i<${#temperaturas[@]}; i++ )); do
-		temperaturas[$i]=$(redondear ${temperaturas[$i]} 0)
+		temperaturas["$i"]=$(redondear "${temperaturas[$i]}" 0)
 
-		if [ $minimo -gt ${temperaturas[$i]} ]; then
+		if [ "$minimo" -gt "${temperaturas[$i]}" ]; then
 			minimo=${temperaturas[$i]}
 		fi
 	done
 
 	if [ "$offset" -eq "-1" ]; then
-		offset=$(($minimo - $(redondear $(($minimo / 10)) 0) * 10))
+		offset=$((minimo - $(redondear $((minimo / 10)) 0) * 10))
 	fi
 
 	if [ "$offset" -lt "$min_offset" ]; then
-		offset=$(($offset+$min_offset))
+		offset=$((offset + min_offset))
 	fi
 
-	minimo=$(($minimo - $offset))
+	minimo=$((minimo - offset))
 
 	# Cálculo del valor máximo de la gráfica
 	for (( i=0; i<${#temperaturas[@]}; i++ )); do
-		temperaturas[$i]=$(redondear ${temperaturas[$i]} 0)
+		temperaturas["$i"]=$(redondear "${temperaturas[$i]}" 0)
 
-		if [ $maximo -lt ${temperaturas[$i]} ]; then
+		if [ "$maximo" -lt "${temperaturas[$i]}" ]; then
 			maximo=${temperaturas[$i]}
 		fi
 	done
 
-	relleno=$(echo $maximo | wc -c)
+	relleno=$(echo "$maximo" | wc -c)
 
-	if [ $(echo $minimo | wc -c) -gt $relleno ]; then
+	if [ $(echo "$minimo" | wc -c) -gt "$relleno" ]; then
 		relleno=$(echo $minimo | wc -c)
 	fi
 
-	relleno=$((${relleno}-1))
+	relleno=$((relleno-1))
 
-	for (( i=$maximo; i>=${minimo}-1; i-- )); do
+	for (( i=maximo; i>=minimo-1; i-- )); do
 		if [[ $i -gt ${minimo}-1 ]]; then
-			printf "%0${relleno}d | " $i
+			printf "%0${relleno}d | " "$i"
 
 			for (( j=0; j<${#horas[@]}; j++ )); do
-				if [ ${temperaturas[$j]} -eq $i ]; then
+				if [ "${temperaturas[$j]}" -eq "$i" ]; then
 					echo -n '== '
-				elif [ ${temperaturas[$j]} -gt $i ]; then
+				elif [ "${temperaturas[$j]}" -gt "$i" ]; then
 					echo -n '|| '
 				else
 					echo -n '   '
 				fi
 			done
 		else
-			rellenar $(($relleno+1))
+			rellenar $((relleno + 1))
 
 			echo -n '--'
 
@@ -89,7 +89,7 @@ pintar() {
 
 			echo
 
-			rellenar $(($relleno+3))
+			rellenar $((relleno + 3))
 
 			for hora in "${horas[@]}"; do
 				echo -n "${hora:0:2} "
@@ -97,7 +97,7 @@ pintar() {
 
 			echo
 
-			rellenar $(($relleno+3))
+			rellenar $((relleno + 3))
 
 			for hora in "${horas[@]}"; do
 				echo -n "${hora:3:2} "
