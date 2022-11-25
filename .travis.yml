@@ -1,0 +1,14 @@
+# Title         : .travis.yml
+# Description   : Configura Travis CI para realizar los tests de integración
+# Author        : Veltys
+# Date          : 2022-11-25
+# Version       : 1.0.0
+# Usage         : (usado externamente)
+# Notes         : 
+
+os: linux
+dist: jammy
+language: bash
+
+script:
+  - ./grafico_temperaturas.sh -t test.log
