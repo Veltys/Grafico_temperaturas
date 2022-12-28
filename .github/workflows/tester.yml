@@ -28,4 +28,4 @@ jobs:
       - name: "Test"
         shell: bash
         run: |
-          ./grafico_temperaturas.sh -t test.log
+          bash -vx ./grafico_temperaturas.sh -t test.log
