@@ -112,7 +112,7 @@ pintar() {
 ## Ejecución principal
 horas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*([0-9]{2}\:[0-9]{2})\:[0-9]{2}\ CE[S]{0,1}T[[:print:]]*/\1/'))
 
-temperaturas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*temp\=([0-9]{2})\.([0-9])[[:print:]]*/\1,\2/'))
+temperaturas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*temp\=([0-9]{2})\.([0-9])[[:print:]]*/\1.\2/'))
 
 if [ "$#" -eq 1 ]; then
 	offset=-1
