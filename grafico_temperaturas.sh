@@ -3,8 +3,8 @@
 # Title         : grafico_temperaturas.sh
 # Description   : Muestra un gráfico ASCII de las temperaturas de un log
 # Author        : Veltys
-# Date          : 2020-10-21
-# Version       : 2.1.6
+# Date          : 2022-12-28
+# Version       : 2.2.0
 # Usage         : sudo bash grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log | ./grafico_temperaturas.sh [ -o offset ] [ -t ] archivo_log
 # Notes         :
 
@@ -110,9 +110,21 @@ pintar() {
 
 
 ## Ejecución principal
+lang=$(locale | grep LANGUAGE | cut -d= -f2 | cut -d_ -f1)
+
+lang=${lang^^}
+
+if [ "$lang" == 'ES' ]; then
+	separador=','
+elif [ "$lang" == 'EN' ]; then
+	separador='.'
+else
+	separador='.'
+fi
+
 horas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*([0-9]{2}\:[0-9]{2})\:[0-9]{2}\ CE[S]{0,1}T[[:print:]]*/\1/'))
 
-temperaturas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e 's/[[:print:]]*temp\=([0-9]{2})\.([0-9])[[:print:]]*/\1.\2/'))
+temperaturas=($(cat ${@: -1} | grep -v '^Informe\ diario\ de\ ' | grep -v '^$' | sed -r -e "s/[[:print:]]*temp\=([0-9]{2})\.([0-9])[[:print:]]*/\1${separador}\2/"))
 
 if [ "$#" -eq 1 ]; then
 	offset=-1
