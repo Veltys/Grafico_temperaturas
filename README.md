@@ -1,5 +1,5 @@
 # Grafico_temperaturas
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e039a4c77e2c4c22b78607ce93413984)](https://app.codacy.com/gh/Veltys/Grafico_temperaturas?utm_source=github.com&utm_medium=referral&utm_content=Veltys/Grafico_temperaturas&utm_campaign=Badge_Grade) [![Build Status](https://app.travis-ci.com/Veltys/Grafico_temperaturas.svg?branch=testing)](https://app.travis-ci.com/Veltys/Grafico_temperaturas)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e039a4c77e2c4c22b78607ce93413984)](https://app.codacy.com/gh/Veltys/Grafico_temperaturas?utm_source=github.com&utm_medium=referral&utm_content=Veltys/Grafico_temperaturas&utm_campaign=Badge_Grade)
 
 Generador de gráfico de temperaturas para logs de Raspberry Pi
 
