@@ -7,6 +7,9 @@ Su formato se basa en [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) y
 - [ ] Hacer una lista de cosas por hacer
 
 ## [2.2.1] - 2022-12-29
+### Añadido
+- Más badges
+
 ### Arreglado
 - Changelog externalizado en **CHANGELOG.md**
 
